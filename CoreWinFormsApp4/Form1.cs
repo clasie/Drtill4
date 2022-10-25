@@ -91,6 +91,7 @@ namespace CoreWinFormsApp4
                 sqlDataAdapter.InsertCommand.ExecuteNonQuery();
 
                 sqlCommand.Dispose();
+                MessageBox.Show("InsertAjouté");
             }
             catch (Exception ex)
             {
@@ -111,6 +112,33 @@ namespace CoreWinFormsApp4
             var connString = "Server=PC1224;DataBase=Aviation;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connString);
             return cnn;
+        }
+
+        private void btn_updateData_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = getConnection();
+            try
+            {
+                sqlConnection.Open();
+                var req  = "UPDATE aviondeaf SET immat = 'CSI-Update1', typeAvion = 'typeAvion-Update' ";
+                req += " WHERE nbHVol = 13";
+                SqlCommand sqlCommand = new SqlCommand(req, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+
+                sqlDataAdapter.UpdateCommand = sqlCommand;
+                sqlDataAdapter.UpdateCommand.ExecuteNonQuery();
+                sqlCommand.Dispose();
+
+                MessageBox.Show("Update ok");
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.ToString());
+            }
+            finally {
+                if (sqlConnection != null) {
+                    sqlConnection.Close();
+                }
+            }
         }
     }
 }
