@@ -33,6 +33,7 @@ namespace CoreWinFormsApp4
             this.btn_getData = new System.Windows.Forms.Button();
             this.btn_insertData = new System.Windows.Forms.Button();
             this.btn_updateData = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_testConnection
@@ -75,11 +76,22 @@ namespace CoreWinFormsApp4
             this.btn_updateData.UseVisualStyleBackColor = true;
             this.btn_updateData.Click += new System.EventHandler(this.btn_updateData_Click);
             // 
+            // btn_delete
+            // 
+            this.btn_delete.Location = new System.Drawing.Point(208, 275);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(261, 29);
+            this.btn_delete.TabIndex = 4;
+            this.btn_delete.Text = "Delete";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_updateData);
             this.Controls.Add(this.btn_insertData);
             this.Controls.Add(this.btn_getData);
@@ -97,6 +109,7 @@ namespace CoreWinFormsApp4
         private System.Windows.Forms.Button btn_getData;
         private System.Windows.Forms.Button btn_insertData;
         private System.Windows.Forms.Button btn_updateData;
+        private System.Windows.Forms.Button btn_delete;
     }
 }
 

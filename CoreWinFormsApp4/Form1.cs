@@ -105,15 +105,6 @@ namespace CoreWinFormsApp4
                 }
             }
         }
-
-        //Utils
-        private SqlConnection getConnection()
-        {
-            var connString = "Server=PC1224;DataBase=Aviation;Trusted_Connection=True";
-            SqlConnection cnn = new SqlConnection(connString);
-            return cnn;
-        }
-
         private void btn_updateData_Click(object sender, EventArgs e)
         {
             SqlConnection sqlConnection = getConnection();
@@ -140,5 +131,38 @@ namespace CoreWinFormsApp4
                 }
             }
         }
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = getConnection();
+            try
+            {
+                sqlConnection.Open();
+                var req = "DELETE FROM aviondeaf WHERE immat LIKE '%CSI%' ";
+                SqlCommand sqlCommand = new SqlCommand(req, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                sqlDataAdapter.DeleteCommand = sqlCommand;
+                sqlDataAdapter.DeleteCommand.ExecuteNonQuery();
+                sqlCommand.Dispose();
+                MessageBox.Show("Ok delete");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally {
+                if (sqlConnection != null) {
+                    sqlConnection.Close();
+                }
+            }
+        }
+        //Utils
+        private SqlConnection getConnection()
+        {
+            var connString = "Server=PC1224;DataBase=Aviation;Trusted_Connection=True";
+            SqlConnection cnn = new SqlConnection(connString);
+            return cnn;
+        }
+
+
     }
 }
