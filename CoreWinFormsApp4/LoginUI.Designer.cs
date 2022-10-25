@@ -34,7 +34,6 @@ namespace CoreWinFormsApp4
             this.lbl_password = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.txt_password = new System.Windows.Forms.TextBox();
-            this.btn_cancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_validate
@@ -81,21 +80,11 @@ namespace CoreWinFormsApp4
             this.txt_password.TabIndex = 4;
             this.txt_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_password_KeyDown);
             // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(422, 277);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(94, 29);
-            this.btn_cancel.TabIndex = 5;
-            this.btn_cancel.Text = "Cancel";
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            // 
             // LoginUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.txt_password);
             this.Controls.Add(this.txt_name);
             this.Controls.Add(this.lbl_password);
@@ -116,6 +105,5 @@ namespace CoreWinFormsApp4
         private System.Windows.Forms.Label lbl_password;
         private System.Windows.Forms.TextBox txt_name;
         private System.Windows.Forms.TextBox txt_password;
-        private System.Windows.Forms.Button btn_cancel;
     }
 }
