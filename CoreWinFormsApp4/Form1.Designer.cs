@@ -31,7 +31,7 @@ namespace CoreWinFormsApp4
         {
             this.btn_testConnection = new System.Windows.Forms.Button();
             this.btn_getData = new System.Windows.Forms.Button();
-            this.btn_getData2 = new System.Windows.Forms.Button();
+            this.btn_insertData = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_testConnection
@@ -54,22 +54,22 @@ namespace CoreWinFormsApp4
             this.btn_getData.UseVisualStyleBackColor = true;
             this.btn_getData.Click += new System.EventHandler(this.btn_getData_Click);
             // 
-            // btn_getData2
+            // btn_insertData
             // 
-            this.btn_getData2.Location = new System.Drawing.Point(208, 181);
-            this.btn_getData2.Name = "btn_getData2";
-            this.btn_getData2.Size = new System.Drawing.Size(261, 29);
-            this.btn_getData2.TabIndex = 2;
-            this.btn_getData2.Text = "Get data 2";
-            this.btn_getData2.UseVisualStyleBackColor = true;
-            this.btn_getData2.Click += new System.EventHandler(this.btn_getData2_Click);
+            this.btn_insertData.Location = new System.Drawing.Point(208, 181);
+            this.btn_insertData.Name = "btn_insertData";
+            this.btn_insertData.Size = new System.Drawing.Size(261, 29);
+            this.btn_insertData.TabIndex = 2;
+            this.btn_insertData.Text = "InsertData";
+            this.btn_insertData.UseVisualStyleBackColor = true;
+            this.btn_insertData.Click += new System.EventHandler(this.btn_insertData_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_getData2);
+            this.Controls.Add(this.btn_insertData);
             this.Controls.Add(this.btn_getData);
             this.Controls.Add(this.btn_testConnection);
             this.Name = "Form1";
@@ -83,7 +83,7 @@ namespace CoreWinFormsApp4
 
         private System.Windows.Forms.Button btn_testConnection;
         private System.Windows.Forms.Button btn_getData;
-        private System.Windows.Forms.Button btn_getData2;
+        private System.Windows.Forms.Button btn_insertData;
     }
 }
 

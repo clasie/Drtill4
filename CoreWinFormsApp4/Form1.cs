@@ -46,38 +46,71 @@ namespace CoreWinFormsApp4
                 }
             }
         }
-
         private void btn_getData_Click(object sender, EventArgs e)
         {
             SqlConnection sqlConnection = getConnection();
-            sqlConnection.Open();
-            var request = "SELECT * FROM aviondeaf";
-            SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);            
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-            StringBuilder sb = new StringBuilder();
-            while (sqlDataReader.Read()) {
-                sb.Append($"{sqlDataReader.GetValue(0)} - {sqlDataReader.GetValue(1)}").AppendLine();
+            try
+            {
+                sqlConnection.Open();
+                var request = "SELECT * FROM aviondeaf";
+                SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                StringBuilder sb = new StringBuilder();
+                while (sqlDataReader.Read())
+                {
+                    sb.Append($"{sqlDataReader.GetValue(0)} - {sqlDataReader.GetValue(1)}").AppendLine();
+                }
+                MessageBox.Show(sb.ToString());
             }
-            MessageBox.Show(sb.ToString());
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                if (sqlConnection != null)
+                {
+                    sqlConnection.Close();
+                }
+            }
         }
-        private SqlConnection getConnection() {
+        private void btn_insertData_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = getConnection();
+            try
+            {
+                sqlConnection.Open();
+                string 
+                    req = $"INSERT INTO aviondeaf (immat,typeAvion, nbHVol)";
+                    req += $"VALUES('CSI-3','csi3-avion',15)";
+
+                SqlCommand sqlCommand = new SqlCommand(req, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+
+                sqlDataAdapter.InsertCommand = sqlCommand;
+                sqlDataAdapter.InsertCommand.ExecuteNonQuery();
+
+                sqlCommand.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                if (sqlConnection != null)
+                {
+                    sqlConnection.Close();
+                }
+            }
+        }
+
+        //Utils
+        private SqlConnection getConnection()
+        {
             var connString = "Server=PC1224;DataBase=Aviation;Trusted_Connection=True";
             SqlConnection cnn = new SqlConnection(connString);
             return cnn;
-        }
-
-        private void btn_getData2_Click(object sender, EventArgs e)
-        {
-            var sqlConnection = getConnection();
-            sqlConnection.Open();
-            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM aviondeaf", sqlConnection);
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-            string txt = "";
-            while (sqlDataReader.Read())
-            { 
-                txt += $"{sqlDataReader.GetValue(1)}";
-            }
-            MessageBox.Show(txt);
         }
     }
 }
