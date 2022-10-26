@@ -137,6 +137,10 @@ namespace CoreWinFormsApp4
             try
             {
                 sqlConnection.Open();
+                sqlConnection.BeginTransaction();
+                var transaction = sqlConnection.BeginTransaction();
+                transaction.Commit();
+                transaction.Rollback();
                 var req = "DELETE FROM aviondeaf WHERE immat LIKE '%CSI%' ";
                 SqlCommand sqlCommand = new SqlCommand(req, sqlConnection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
